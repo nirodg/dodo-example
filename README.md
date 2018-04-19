@@ -1,5 +1,7 @@
 # dodo-example
 
+*Note* [Please checkout (dodo's framework) before](https://github.com/nirodg/dodo/)
+
 1. `git clone git@github.com:nirodg/dodo-example.git`
 2. `cd dodo-example && mvn clean install`
 3. deploy the war file
