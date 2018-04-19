@@ -1,10 +1,10 @@
-#dodo-example
+# dodo-example
 
 1. git clone git@github.com:nirodg/dodo.git
 2. cd dodo && mvn clean install
 3. deploy the war file
 
-#Request methods available by default
+# Request methods available by default
 1. _@GET_ getAll()  http://localhost:8080/dodo-example/rest/cars/
 2. _@GET_ getByGuid(guid)  http://localhost:8080/dodo-example/rest/cars/getByGuid/<guid>
 3. _@POST_ create(entityDTO)  http://localhost:8080/dodo-example/rest/cars/
