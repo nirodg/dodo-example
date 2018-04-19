@@ -1,7 +1,7 @@
 # dodo-example
 
-1. git clone git@github.com:nirodg/dodo.git
-2. cd dodo && mvn clean install
+1. `git clone git@github.com:nirodg/dodo.git`
+2. `cd dodo && mvn clean install`
 3. deploy the war file
 
 # Request methods available by default
