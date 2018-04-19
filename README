@@ -1,0 +1,6 @@
+# dodo-example
+
+1. git clone
+2. mvn clean install
+3. deploy the war file
+
