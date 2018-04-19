@@ -16,7 +16,7 @@
 
 # Versioning
 
-[SemVer](http://semver.org/) will be used for versioning because it provides a clear documentation. For the versions available, see the [tags on this repository](https://github.com/nirodg/easyrs/releases).
+[SemVer](http://semver.org/) will be used for versioning because it provides a clear documentation
 
 # Contribute
 
