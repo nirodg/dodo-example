@@ -12,30 +12,18 @@
  * OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *******************************************************************************/
-package com.dbrage.apps.garagebot.rs.api;
+package com.brage.dodo.example.db.mapper;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import org.mapstruct.Mapper;
 
-import com.brage.dodo.rs.AbstractRestService;
-import com.dbrage.apps.garagebot.db.dto.CarDTO;
-import com.dbrage.apps.garagebot.rs.EndpointPaths;
+import com.brage.dodo.jpa.mapper.AbstractModelMapper;
+import com.brage.dodo.example.db.dto.CarDTO;
+import com.brage.dodo.example.db.models.Car;
 
 /**
- *
  * @author Dorin Brage
  */
-@Path(EndpointPaths.CARS)
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
-public interface CarRestService extends AbstractRestService<CarDTO> {
-
-	@GET
-	@Path("/getByLicensePlate/{licensePlate}")
-	public CarDTO getByLicensePlate(@PathParam("licensePlate") String licensePlate);
+@Mapper(componentModel = "cdi")
+public abstract class CarMapper extends AbstractModelMapper<Car, CarDTO> {
 
 }

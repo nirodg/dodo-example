@@ -12,18 +12,16 @@
  * OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *******************************************************************************/
-package com.dbrage.apps.garagebot.db.mapper;
+package com.brage.dodo.example.rs;
 
-import org.mapstruct.Mapper;
-
-import com.brage.dodo.jpa.mapper.AbstractModelMapper;
-import com.dbrage.apps.garagebot.db.dto.CarDTO;
-import com.dbrage.apps.garagebot.db.models.Car;
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
 /**
+ *
  * @author Dorin Brage
  */
-@Mapper(componentModel = "cdi")
-public abstract class CarMapper extends AbstractModelMapper<Car, CarDTO> {
+@ApplicationPath(EndpointPaths.ROOT)
+public class EndpointActivator extends Application {
 
 }

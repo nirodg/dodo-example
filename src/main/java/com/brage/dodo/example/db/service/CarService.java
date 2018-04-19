@@ -12,56 +12,43 @@
  * OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *******************************************************************************/
-package com.dbrage.apps.garagebot.rs.services;
+package com.brage.dodo.example.db.service;
 
 import java.util.logging.Logger;
 
-import javax.ejb.EJB;
-import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
 
+import com.brage.dodo.example.db.dto.CarDTO;
+import com.brage.dodo.example.db.mapper.CarMapper;
+import com.brage.dodo.example.db.models.Car;
+import com.brage.dodo.example.db.models.Car_;
 import com.brage.dodo.jpa.AbstractService;
 import com.brage.dodo.jpa.mapper.AbstractModelMapper;
-import com.brage.dodo.rs.AbstractRestServiceBean;
-import com.dbrage.apps.garagebot.db.dto.CarDTO;
-import com.dbrage.apps.garagebot.db.mapper.CarMapper;
-import com.dbrage.apps.garagebot.db.models.Car;
-import com.dbrage.apps.garagebot.db.service.CarService;
-import com.dbrage.apps.garagebot.rs.api.CarRestService;
 
 /**
- *
  * @author Dorin Brage
  */
 @Stateless
-@Local(CarRestService.class)
 @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-public class CarRestServiceBean extends AbstractRestServiceBean<Car, CarDTO> implements CarRestService {
-
-	private static final Logger LOG = Logger.getLogger(CarRestServiceBean.class.getName());
-
-	@EJB
-	private CarService service;
+public class CarService extends AbstractService<Car, CarDTO> {
 
 	@Inject
 	private CarMapper mapper;
+
+	private static final Logger LOG = Logger.getLogger(CarService.class.getName());
 
 	@Override
 	public AbstractModelMapper getMapper() {
 		return mapper;
 	}
 
-	@Override
-	public AbstractService getService() {
-		return service;
+	public Car getByLicensePlate(String licensePlate) {
+		initializePredicates();
+		 addEqualsPredicate(Car_.licensePlate, licensePlate);
+		return getSingleResult(false);
 	}
 
-	@Override
-	public CarDTO getByLicensePlate(String licensePlate) {
-		Car car = service.getByLicensePlate(licensePlate);
-		return mapper.find(car);
-	}
 }

@@ -12,16 +12,30 @@
  * OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *******************************************************************************/
-package com.dbrage.apps.garagebot.rs;
+package com.brage.dodo.example.rs.api;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import com.brage.dodo.rs.AbstractRestService;
+import com.brage.dodo.example.db.dto.CarDTO;
+import com.brage.dodo.example.rs.EndpointPaths;
 
 /**
  *
  * @author Dorin Brage
  */
-@ApplicationPath(EndpointPaths.ROOT)
-public class EndpointActivator extends Application {
+@Path(EndpointPaths.CARS)
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
+public interface CarRestService extends AbstractRestService<CarDTO> {
+
+	@GET
+	@Path("/getByLicensePlate/{licensePlate}")
+	public CarDTO getByLicensePlate(@PathParam("licensePlate") String licensePlate);
 
 }

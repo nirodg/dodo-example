@@ -12,43 +12,43 @@
  * OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *******************************************************************************/
-package com.dbrage.apps.garagebot.db.service;
+package com.brage.dodo.example.db.dto;
 
-import java.util.logging.Logger;
-
-import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
-import javax.inject.Inject;
-
-import com.brage.dodo.jpa.AbstractService;
-import com.brage.dodo.jpa.mapper.AbstractModelMapper;
-import com.dbrage.apps.garagebot.db.dto.CarDTO;
-import com.dbrage.apps.garagebot.db.mapper.CarMapper;
-import com.dbrage.apps.garagebot.db.models.Car;
-import com.dbrage.apps.garagebot.db.models.Car_;
+import com.brage.dodo.jpa.AbstractDTOModel;
 
 /**
  * @author Dorin Brage
  */
-@Stateless
-@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-public class CarService extends AbstractService<Car, CarDTO> {
+public class CarDTO extends AbstractDTOModel {
 
-	@Inject
-	private CarMapper mapper;
+	private static final long serialVersionUID = 3608065449107555582L;
 
-	private static final Logger LOG = Logger.getLogger(CarService.class.getName());
+	private String make;
+	private String model;
+	private String licensePlate;
 
-	@Override
-	public AbstractModelMapper getMapper() {
-		return mapper;
+	public String getMake() {
+		return make;
 	}
 
-	public Car getByLicensePlate(String licensePlate) {
-		initializePredicates();
-		addEqualsPredicate(Car_.licensePlate, licensePlate);
-		return getSingleResult(false);
+	public void setMake(String make) {
+		this.make = make;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getLicensePlate() {
+		return licensePlate;
+	}
+
+	public void setLicensePlate(String licensePlate) {
+		this.licensePlate = licensePlate;
 	}
 
 }
