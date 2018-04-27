@@ -21,5 +21,7 @@ public class EndpointPaths {
 
 	public final static String ROOT = "/rest";
 	public final static String CARS = "/cars";
+	public final static String CLIENTS = "/clients";
+	public final static String MOCK = "/mock";
 
 }
