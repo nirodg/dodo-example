@@ -19,7 +19,7 @@
 package com.brage.dodo.example.rs.api;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -28,7 +28,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import com.brage.dodo.example.db.dto.CarDTO;
 import com.brage.dodo.example.rs.EndpointPaths;
-import com.brage.dodo.rs.AbstractRestService;
+import ro.brage.dodo.rs.AbstractRestService;
 
 /**
  *
@@ -45,8 +45,9 @@ public interface CarRestService extends AbstractRestService<CarDTO> {
 
   @GET
   @Path("/filterByYears/{from}/{to}")
-  public Set<CarDTO> filterByYears(@PathParam("from") Date from, @PathParam("to") Date to) throws Exception;
-  
+  public List<CarDTO> filterByYears(@PathParam("from") Date from, @PathParam("to") Date to)
+      throws Exception;
+
   @GET
   @Path("/count")
   public Long getTotalEntities();

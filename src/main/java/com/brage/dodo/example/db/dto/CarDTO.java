@@ -1,5 +1,6 @@
-/*******************************************************************************
- * Copyright 2018 Dorin Brage
+/**
+ * ***************************************************************************** Copyright 2018
+ * Dorin Brage
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -15,14 +16,18 @@
  * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *******************************************************************************/
+ */
 package com.brage.dodo.example.db.dto;
 
-import com.brage.dodo.jpa.AbstractDTOModel;
+import lombok.Getter;
+import lombok.Setter;
+import ro.brage.dodo.jpa.AbstractDTOModel;
 
 /**
  * @author Dorin Brage
  */
+@Getter
+@Setter
 public class CarDTO extends AbstractDTOModel {
 
   private static final long serialVersionUID = 3608065449107555582L;
@@ -30,39 +35,5 @@ public class CarDTO extends AbstractDTOModel {
   private String make;
   private String model;
   private String licensePlate;
-  private ClientDTO client;
-
-  public String getMake() {
-    return make;
-  }
-
-  public void setMake(String make) {
-    this.make = make;
-  }
-
-  public String getModel() {
-    return model;
-  }
-
-  public void setModel(String model) {
-    this.model = model;
-  }
-
-  public String getLicensePlate() {
-    return licensePlate;
-  }
-
-  public void setLicensePlate(String licensePlate) {
-    this.licensePlate = licensePlate;
-  }
-
-  public ClientDTO getClient() {
-    return client;
-  }
-
-  public void setClient(ClientDTO client) {
-    this.client = client;
-  }
-
 
 }

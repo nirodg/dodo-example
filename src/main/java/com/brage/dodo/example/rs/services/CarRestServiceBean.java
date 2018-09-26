@@ -19,7 +19,7 @@
 package com.brage.dodo.example.rs.services;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -29,7 +29,7 @@ import com.brage.dodo.example.db.mapper.CarMapper;
 import com.brage.dodo.example.db.models.Car;
 import com.brage.dodo.example.db.service.CarService;
 import com.brage.dodo.example.rs.api.CarRestService;
-import com.brage.dodo.rs.AbstractRestServiceBean;
+import ro.brage.dodo.rs.AbstractRestServiceBean;
 
 /**
  *
@@ -50,10 +50,10 @@ public class CarRestServiceBean extends AbstractRestServiceBean<Car, CarDTO, Car
   }
 
   @Override
-  public Set<CarDTO> filterByYears(Date from, Date to) throws Exception {
+  public List<CarDTO> filterByYears(Date from, Date to) throws Exception {
     getLogger().info("filterByYears({}, {})", from, to);
 
-    Set<Car> cars = getService().filterByYears(from, to);
+    List<Car> cars = getService().filterByYears(from, to);
     return getMapper().findDTOs(cars);
   }
 

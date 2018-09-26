@@ -1,5 +1,6 @@
-/*******************************************************************************
- * Copyright 2018 Dorin Brage
+/**
+ * ***************************************************************************** Copyright 2018
+ * Dorin Brage
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction,
@@ -15,28 +16,18 @@
  * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *******************************************************************************/
+ */
 package com.brage.dodo.example.db.mapper;
 
-import java.util.Set;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 import com.brage.dodo.example.db.dto.CarDTO;
 import com.brage.dodo.example.db.models.Car;
-import com.brage.dodo.jpa.mapper.AbstractModelMapper;
+import ro.brage.dodo.jpa.mapper.AbstractModelMapper;
 
 /**
  * @author Dorin Brage
  */
 @Mapper(componentModel = "cdi")
 public abstract class CarMapper extends AbstractModelMapper<Car, CarDTO> {
-
-  @Override
-  @Mappings({@Mapping(target = "client", ignore = true)})
-  public abstract CarDTO find(Car entity);
-
-  @Override
-  public abstract Set<CarDTO> findDTOs(Set<Car> entities);
 
 }

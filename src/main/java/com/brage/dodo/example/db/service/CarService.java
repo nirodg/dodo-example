@@ -19,19 +19,15 @@
 package com.brage.dodo.example.db.service;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.JoinType;
 import com.brage.dodo.example.db.models.Car;
 import com.brage.dodo.example.db.models.Car_;
-import com.brage.dodo.example.db.models.Client;
-import com.brage.dodo.example.db.models.Client_;
-import com.brage.dodo.jpa.AbstractService;
-import com.brage.dodo.jpa.Finder;
-import com.brage.dodo.jpa.enums.OrderBy;
+import ro.brage.dodo.jpa.AbstractService;
+import ro.brage.dodo.jpa.Finder;
+import ro.brage.dodo.jpa.enums.OrderBy;
 
 /**
  * @author Dorin Brage
@@ -43,25 +39,26 @@ public class CarService extends AbstractService<Car> {
   public Car getByLicensePlate(String licensePlate) throws Exception {
     return new Finder<>(this)
         .equalTo(Car_.licensePlate, licensePlate)
+        .orderBy(Car_.year, OrderBy.ASC)
         .findItem();
   }
 
-  public Set<Car> getByMakeAndModel(String make, String model) throws Exception {
+  public List<Car> getByMakeAndModel(String make, String model) throws Exception {
     return new Finder<>(this)
         .equalTo(Car_.make, make)
         .equalTo(Car_.model, model)
         .findItems();
   }
 
-  public Set<Car> getByModelAndFromYearToCurrent(String model, Date fromYear) throws Exception {
+  public List<Car> getByModelAndFromYearToCurrent(String model, Date fromYear) throws Exception {
     return new Finder<>(this)
         .equalTo(Car_.model, model)
         .between(Car_.year, fromYear, new Date())
-        .orderBy(Car_.year, OrderBy.DESC)
+        .orderBy(Car_.year, OrderBy.ASC)
         .findItems();
   }
 
-  public Set<Car> filterByYears(Date from, Date to) throws Exception {
+  public List<Car> filterByYears(Date from, Date to) throws Exception {
     return new Finder<>(this)
         .between(Car_.year, from, to)
         .orderBy(Car_.year, OrderBy.ASC)
